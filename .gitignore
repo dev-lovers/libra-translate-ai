@@ -1,0 +1,48 @@
+# Byte-compiled / optimized / DLL files
+__pycache__
+*.py[cod]
+*$py.class
+
+# Distribution / packaging 
+build/ 
+dist/ 
+downloads/ 
+.eggs/ 
+*.egg-info/ 
+.installed.cfg 
+*.egg 
+
+# Log files
+*.log
+
+# Unit test / coverage reports 
+htmlcov/ 
+.tox/ 
+.coverage 
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+
+# pyenv
+.python-version
+
+# Environment
+.env
+.venv
+env/
+venv/
+ENV/
+
+# sftp configuration file 
+sftp-config.json
+
+# Visual Studio Code
+.vscode/* 
+!.vscode/settings.json 
+!.vscode/tasks.json 
+!.vscode/launch.json 
+!.vscode/extensions.json
