@@ -3,7 +3,7 @@
 # Uso: ./bin/data_cleaner.sh
 
 # Diretório base
-base_dir="$(pwd)/data/validation"
+base_dir="$(pwd)/dataset/validation"
 
 # Loop para percorrer todas as letras do alfabeto
 for letter  in {A..Z}; do

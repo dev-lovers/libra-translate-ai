@@ -1,6 +1,5 @@
-# 1. Importação das bibliotecas e a base de dados
-
 import os
+import time
 import tensorflow as tf
 from tensorflow import keras
 from keras.preprocessing.image import ImageDataGenerator
@@ -16,14 +15,14 @@ image_height, image_width = 64, 64
 image_size = (image_height, image_width)
 
 batch_size = 32
-epochs = 10  # Reduzido o número de épocas para acelerar o treinamento
+epochs = 10
 learning_rate = 0.0001
 
 # 2 - Pré-processamento
 training_datagen = ImageDataGenerator(
     rescale=1./255,
-    shear_range=0.1,  # Reduzido para menos distorção
-    zoom_range=0.1,   # Reduzido para menos distorção
+    shear_range=0.1,
+    zoom_range=0.1,
     horizontal_flip=True
 )
 
@@ -54,7 +53,7 @@ model = Sequential([
     Flatten(),
     Dropout(0.5),
     Dense(128, activation='relu'),
-    Dense(21, activation='softmax')  # Certifique-se de que o número de classes esteja correto
+    Dense(21, activation='softmax')
 ])
 
 # 4 - Compilação
@@ -71,6 +70,8 @@ history = model.fit(
 )
 
 # 6 - Salvando o modelo
-model.save('./models/keras/model.keras')
-# tf.saved_model.save(model, './models/saved_model/model')
+ts = int(time.time())
+file_path = f"./src/models/saved_model/{ts}/"
+model.save(filepath=file_path, save_format='tf')
+
 print('Modelo treinado e salvo com sucesso!')
