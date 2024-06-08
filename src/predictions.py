@@ -15,10 +15,10 @@ def prepare_image(img_path, img_size):
     img_array = img_array / 255.0 
     return img_array
 
-image_path = '../test_images/4.jpg'
+image_path = 'IMAGE_PATH'
 x_test = prepare_image(image_path, (64, 64))
 
-URL = "http://localhost:8501/v1/models/saved_model:predict"
+URL = "http://localhost:8501/v1/models/iana:predict"
 
 def make_prediction(instances):
    data = json.dumps({"signature_name": "serving_default", "instances": instances.tolist()})
