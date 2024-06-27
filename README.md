@@ -1,6 +1,6 @@
-# Guia de Implantação do Contêiner TensorFlow Serving
+# Libra Translate AI
 
-Este guia fornecerá instruções básicas sobre como implantar o contêiner Docker configurado para servir modelos TensorFlow usando TensorFlow Serving.
+Libra Translate AI é um componente essencial do aplicativo Libra Translate, focado na tradução automática de Libras (Língua Brasileira de Sinais) para texto ou voz. Utilizando modelos de aprendizado profundo, este serviço identifica e interpreta sinais em Libras a partir de imagens enviadas pelo backend, tornando a comunicação mais acessível e inclusiva para pessoas surdas ou com deficiência auditiva.
 
 ## Pré-requisitos
 
@@ -8,31 +8,27 @@ Este guia fornecerá instruções básicas sobre como implantar o contêiner Doc
 
 ## Como Implantar
 
-1. Clone este repositório para o seu ambiente local:
+Para subir o serviço utilizando Docker Compose com a tag de build:
+
+1. Clone este repositório para o seu ambiente local, se ainda não o fez:
 
    ```bash
    git clone https://github.com/seu-usuario/seu-repositorio.git
    ```
 
-2. Navegue até o diretório clonado:
+2. Navegue até o diretório onde está localizado o arquivo `docker-compose.yml`:
 
    ```bash
-   cd seu-repositorio
+   cd caminho/para/seu-repositorio
    ```
 
-3. Construa o contêiner Docker usando o Dockerfile fornecido:
+3. Execute o seguinte comando para construir (se necessário) e iniciar os containers definidos no seu arquivo `docker-compose.yml`:
 
    ```bash
-   docker build -t meu-servidor-tensorflow .
+   docker-compose up --build
    ```
 
-4. Execute o contêiner Docker:
-
-   ```bash
-   docker run -p 8501:8501 -p 8500:8500 meu-servidor-tensorflow
-   ```
-
-Isso iniciará o servidor TensorFlow Serving no contêiner e o tornará acessível nas portas 8500 (gRPC) e 8501 (REST) do seu sistema.
+Isso iniciará o servidor TensorFlow Serving no contêiner conforme definido no seu arquivo `docker-compose.yml`, tornando-o acessível nas portas especificadas.
 
 ## Acesso ao Servidor TensorFlow Serving
 
@@ -41,9 +37,9 @@ Uma vez que o servidor TensorFlow Serving esteja em execução, você pode acess
 - REST (HTTP): `http://localhost:8501/v1/models/iana:predict`
 - gRPC: `grpc://localhost:8500`
 
-Substitua `iana` pelo nome do seu modelo conforme especificado durante a construção do contêiner.
+Substitua `iana` pelo nome do seu modelo conforme especificado no seu arquivo `docker-compose.yml`.
 
 ## Informações Adicionais
 
-- Certifique-se de que o modelo esteja localizado no diretório correto dentro do contêiner, conforme especificado no Dockerfile.
+- Verifique se o modelo está localizado no diretório correto dentro do contêiner, conforme especificado no Dockerfile utilizado pelo Docker Compose.
 - Para informações detalhadas sobre o TensorFlow Serving e suas capacidades, consulte a [documentação oficial do TensorFlow Serving](https://www.tensorflow.org/tfx/guide/serving).
